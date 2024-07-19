@@ -1,168 +1,72 @@
-# CLM Monitoring
+# Engineering Lifecycle Management Monitoring
 
-**_A guide on how to improve the reliability and predictability of your CLM_**
+**_A guide on how to improve the reliability and predictability of your Engineering Lifecycle Management_**
 
 **_System._**
 
 By Vishwanath Ramaswamy, Vaughn Rokosz, Richard Watts
 
-Covers: CLM 6.0.5 and beyond
+Covers: Engineering Lifecycle Management 6.0.5 and beyond
 
 ## Introduction
 
-Complex distributed systems require an automated, layered approach of
+Complex distributed systems require an automated, layered approach of monitoring. Most organizations monitor key parts of their infrastructure, but this typically stops at the application layer because it can be difficult to know what and how to effectively monitor applications without an understanding of the application architecture.
 
-monitoring. Most organizations monitor key parts of their infrastructure, but this
-
-typically stops at the application layer because it can be difficult to know what
-
-and how to effectively monitor applications without an understanding of the
-
-application architecture.
-
-This article describes some key application metrics to monitor and a high
-
-level overview of the distributed application architecture. We will describe how
-
-to enable managed beans and briefly touch on what managed beans are.
+This article describes some key application metrics to monitor and a high level overview of the distributed application architecture. We will describe how to enable managed beans and briefly touch on what managed beans are.
 
 ## Application Reliability and Predictability
 
 Why monitor your applications?
 
-Application monitoring has a proven track record of improving the
+Application monitoring has a proven track record of improving the predictability and reliability of your applications.
 
-predictability and reliability of your applications.
+Monitoring in general is looking at trends over time. This trending is done by collecting data, through polling (pull) or publish (push) models. Once the data is available in some form, it needs to be collected, stored, and we can look at trends in the data. Most monitoring applications have analytical tools that allow the administrators to aggregate the data in charts or reports.
 
-### Monitoring in general is looking at trends over time. This trending is done by
- collecting data, through polling (pull) or publish (push) models. Once the data is
+Applications do not, as a general rule, fail instantly, they degrade over time.
+Application monitoring tools collect metrics over time that can be used to perform trend analysis. Rules can be applied to these trends to alert administrators to situations that require intervention.
 
+ Armed with trends, you can further refine your rules to ensure that administrators are notified in advance of issues and they can proactively resolve them before outages occur. 
 
------
+These trends help with the “Why”… An application suddenly failed. Users are seeing behavior that they can’t explain and neither can the administrator. Armed with application metrics and trend information, administrators are more comfortable with diagnosing the behaviors that led up to a failure and can better determine ways to avoid it in the future.
 
-### available in some form, it needs to be collected, stored, and we can look at trends in the data. Most monitoring applications have analytical tools that allow the administrators to aggregate the data in charts or reports.
+A monitoring system with warnings and alerts allow you to see potential issues and give you time to take steps to proactively address the problem. In cases where the system does something unexpected, you can look at specific trends to see if these can lead you to what caused the problem (resource intensive scenarios for example).
 
- Applications do not, as a general rule, fail instantly, they degrade over time.
- Application monitoring tools collect metrics over time that can be used to perform trend analysis. Rules can be applied to these trends to alert administrators to situations that require intervention.
-
- Armed with trends, you can further refine your rules to ensure that
- administrators are notified in advance of issues and they can proactively resolve them before outages occur.
-
- These trends help with the “Why”… An application suddenly failed. Users
- are seeing behavior that they can’t explain and neither can the administrator. Armed with application metrics and trend information, administrators are more comfortable with diagnosing the behaviors that led up to a failure and can better determine ways to avoid it in the future.
-
-A monitoring system with warnings and alerts allow you to see potential
-
-issues and give you time to take steps to proactively address the problem. In
-
-cases where the system does something unexpected, you can look at specific
-
-trends to see if these can lead you to what caused the problem (resource intensive
-
-scenarios for example).
-
-Armed with the information, you can build better warnings and alerts that
-
-allow you to proactively manage your systems.
+Armed with the information, you can build better warnings and alerts that allow you to proactively manage your systems.
 
 **Use Cases**
 
-When developing a monitoring strategy, it is important to understand your
-
-
------
-
-stakeholder use cases to ensure that you are monitoring those parts of the
-
-system, they use the most. This is part of your “what” to monitor.
+When developing a monitoring strategy, it is important to understand your stakeholder use cases to ensure that you are monitoring those parts of the system, they use the most. This is part of your “what” to monitor.
 
 **Service Level Agreement**
 
-Depending on stakeholder expectations, you need to customize your
+Depending on stakeholder expectations, you need to customize your monitoring to help you meet your service level agreements. This may require additional monitoring or more warnings than we would recommend in a basic deployment.
 
-monitoring to help you meet your service level agreements. This may require
-
-additional monitoring or more warnings than we would recommend in a basic
-
-deployment.
-
-Typically you measure system availability or application uptime as the
-
-minimum bar. Some stakeholders use a combination of metrics that measure
-
-response and/or transaction times to build a better picture of how the system is
-
-responding.
+Typically you measure system availability or application uptime as the minimum bar. Some stakeholders use a combination of metrics that measure response and/or transaction times to build a better picture of how the system is responding.
 
 ## Java Management Extensions
 
-As part of the CLM Serviceability strategy, we have implemented J2EE
+As part of the Engineering Lifecycle Management Serviceability strategy, we have implemented J2EE industry standard managed beans which are defined and part of the Java Management Extensions specification. This gives us a defined, well understood way of providing information about what our applications are doing.
 
-industry standard managed beans which are defined and part of the Java
+Java Management Extensions (JMX) are a standard component of the Java Platform. It specifies a method and design patterns for developers to integrate applications with management or monitoring software by assigning Java objects with attributes.
 
-Management Extensions specification. This gives us a defined, well understood
+It is dynamic, making it possible to monitor resources when they are created, implemented or installed. For this article, we only focus on the monitoring aspects of JMX and managed beans but the specification covers more than that.
 
-way of providing information about what our applications are doing.
-
-Java Management Extensions (JMX) are a standard component of the Java
-
-Platform. It specifies a method and design patterns for developers to integrate
-
-applications with management or monitoring software by assigning Java objects
-
-with attributes.
-
-It is dynamic, making it possible to monitor resources when they are created,
-
-implemented or installed. For this article, we only focus on the monitoring
-
-aspects of JMX and managed beans but the specification covers more than that.
-
-The Java objects, called managed beans (mBeans) follow the design pattern
-
-described in the JMX specification and provide common access points for agents
-
-
------
-
-to consume data from the mBeans. In the CLM implementation, we leverage
-
-MXBeans which are a documented variant of managed bean. MXBeans use a
-
-predefined set of datatypes making them portable and easy for any monitoring
-
-client to consume.
+The Java objects, called managed beans (mBeans) follow the design pattern described in the JMX specification and provide common access points for agents to consume data from the mBeans. In the Engineering Lifecycle Management implementation, we leverage MXBeans which are a documented variant of managed bean. MXBeans use a predefined set of datatypes making them portable and easy for any monitoring client to consume.
 
 **Jazz Application Framework SDK**
 
-Many of the jazz based applications are built on a common framework called
-
-the Jazz Application Framework SDK. These applications all share a common set
-
-of services and the MXBeans are part of that common set of services.
-
-Applications built on other application frameworks will be covered in a future
-
-article.
+Many of the jazz based applications are built on a common framework called the Jazz Application Framework SDK. These applications all share a common set of services and the MXBeans are part of that common set of services. Applications built on other application frameworks will be covered in a future article.
 
 **Jazz Service Invocation Architecture**
 
-When we set out to instrument the application, we needed to look at the
+When we set out to instrument the application, we needed to look at the architecture from a slightly different perspective, the service invocation perspective. This gives us a better picture of where specifically we needed to build MXBeans based on entry points to provide data to a monitoring system.
 
-architecture from a slightly different perspective, the service invocation
-
-perspective. This gives us a better picture of where specifically we needed to
-
-build MXBeans based on entry points to provide data to a monitoring system.
-
-This is a diagram of the Service invocation architecture with the kinds of data
-
-you can get from the JMX service.
+This is a diagram of the Service invocation architecture with the kinds of data you can get from the JMX service.
 
 
 -----
 
-## What should you monitor in CLM
+## What should you monitor in Engineering Lifecycle Management
 
 Application monitoring should compliment your enterprise monitoring
 
@@ -172,11 +76,11 @@ PaaS services), it is important that the key distributed services are monitored 
 
 the network, operating system, database and application levels. A topology
 
-diagram of your CLM system will show you the potential points of failure and
+diagram of your Engineering Lifecycle Management system will show you the potential points of failure and
 
 the applications that should be monitored.
 
-For CLM Specifically, we have six key application areas that should be
+For Engineering Lifecycle Management Specifically, we have six key application areas that should be
 
 monitored. We provide much more instrumentation, but these key areas to
 
@@ -194,10 +98,6 @@ number of active services exceeds the number of processors available on the
 server, then the server is most likely nearing 100%CPU utilization and the
 
 performance of the server will suffer.
-
-
-
-
 
 |Attribute|Description|Threshold|
 |---|---|---|
@@ -285,7 +185,7 @@ response times can indicate a database problem. Sustained periods of poor SQL
 
 performance may also be a side effect of increasing data volumes, or complex
 
-CLM queries/reports.
+Engineering Lifecycle Management queries/reports.
 
 com.ibm.team.foundation.sqlactivity:name=jts,type=sqlActivitySummaryMet
 
@@ -324,7 +224,7 @@ If the CPU utilization of the JVM (ProcessCpuLoad) is much lower than the
 
 overall CPU utilization, there may be other processes competing for CPU on the
 
-CLM server. If the overall CPU usage is high, you should investigate to see if
+Engineering Lifecycle Management server. If the overall CPU usage is high, you should investigate to see if
 
 there are multiple services than can be disabled or moved to other systems.
 
@@ -403,7 +303,7 @@ attribute to evaluate is statusDesc looking for the failure value.
 
 **(6) Resource Intensive Scenarios Summary bean**
 
-There are system and user actions performed on CLM systems that can be
+There are system and user actions performed on Engineering Lifecycle Management systems that can be
 
 resource intensive. When these actions occur on systems that already taxed, the
 
@@ -419,9 +319,9 @@ scenario is actually run.
 
 [You can review the details on resource intensive scenarios on the Jazz.net](http://Jazz.net)
 
-[deployment wiki (https://jazz.net/wiki/bin/view/Deployment/](https://jazz.net/wiki/bin/view/Deployment/CLMExpensiveScenarios)
+[deployment wiki (https://jazz.net/wiki/bin/view/Deployment/](https://jazz.net/wiki/bin/view/Deployment/Engineering Lifecycle ManagementExpensiveScenarios)
 
-[CLMExpensiveScenarios).](https://jazz.net/wiki/bin/view/Deployment/CLMExpensiveScenarios)
+[Engineering Lifecycle ManagementExpensiveScenarios).](https://jazz.net/wiki/bin/view/Deployment/Engineering Lifecycle ManagementExpensiveScenarios)
 
 |MBean|Attribute|Description|Threshold|
 |---|---|---|---|
@@ -478,7 +378,7 @@ _counterNameAndId=summary_*,_
 
 **_countOverInterval > 5_**
 
-## Enabling Managed Beans in CLM
+## Enabling Managed Beans in Engineering Lifecycle Management
 
 We will be enabling the metrics collector tasks related to the specific managed
 
@@ -578,7 +478,7 @@ Where context-root is the application context root, so the Jazz Team Server
 
 [(jts) would be https://server:port/jts/repodebug. This might be different](https://server:port/jts/repodebug)
 
-depending on how you define your CLM context roots in your enterprise.
+depending on how you define your Engineering Lifecycle Management context roots in your enterprise.
 
 
 -----
@@ -650,16 +550,29 @@ systems usually check for threshold violations every 10 seconds.
 
 [Java_Management_Extensions](https://en.wikipedia.org/wiki/Java_Management_Extensions)
 
-[CLM Monitoring Managed Beans Reference - https://jazz.net/wiki/bin/](https://jazz.net/wiki/bin/view/Deployment/CLMMonitoringMBeans)
+[Engineering Lifecycle Management Monitoring Managed Beans Reference - https://jazz.net/wiki/bin/](https://jazz.net/wiki/bin/view/Deployment/Engineering Lifecycle ManagementMonitoringMBeans)
 
-[view/Deployment/CLMMonitoringMBeans](https://jazz.net/wiki/bin/view/Deployment/CLMMonitoringMBeans)
+[view/Deployment/Engineering Lifecycle ManagementMonitoringMBeans](https://jazz.net/wiki/bin/view/Deployment/Engineering Lifecycle ManagementMonitoringMBeans)
 
-[Resource Intensive Scenarios - https://jazz.net/wiki/bin/view/](https://jazz.net/wiki/bin/view/Deployment/CLMExpensiveScenarios)
+[Resource Intensive Scenarios - https://jazz.net/wiki/bin/view/](https://jazz.net/wiki/bin/view/Deployment/Engineering Lifecycle ManagementExpensiveScenarios)
 
-[Deployment/CLMExpensiveScenarios](https://jazz.net/wiki/bin/view/Deployment/CLMExpensiveScenarios)
+[Deployment/Engineering Lifecycle ManagementExpensiveScenarios](https://jazz.net/wiki/bin/view/Deployment/Engineering Lifecycle ManagementExpensiveScenarios)
 
 [RepoDebug - https://jazz.net/wiki/bin/view/Main/RepoDebug](https://jazz.net/wiki/bin/view/Main/RepoDebug)
 
 
 -----
 
+## What to monitor during the upgrade 
+
+If you are still planning the upgrade, then the [pre-gather statistics](https://jazz.net/wiki/bin/view/Deployment/UnderstandingDOORSNextSizingsin6X#Gathering_pre_upgrade_repository) are a very useful way to gauge if your system is large, medium, or small, in terms of what IBM and other clients have tested against. Your size is somewhat dependent upon your hardware, so also use [DB Server used for IBM testing](https://jazz.net/wiki/bin/view/Deployment/UnderstandingDOORSNextSizingsin6X#DB_Server_for_IBM_testing)to extrapolate your size and upgrade experience.
+
+It is imperative that you use a staging area and that the hardware is comparable with your production server if you are to ascertain useful timings for your planning.
+
+### nmon and other monitoring tools 
+
+Many tools are available including IBM Tivoli Monitoring (ITM), third party tools like helpsystems-MPG; and open-source like njmon. However, in terms of monitoring the upgrade, the preferred method for AIX and Linux is to use NMON. There are some [very useful videos](https://www.youtube.com/user/nigelargriffiths) for setting up NMON and NJMON/NIMON. This level of data allows for a more accurate correlation of the system at the time of any issues in the logs.
+
+Windows users can setup the Windows Performance Monitor, [perfmon](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/perfmon) to monitor the upgrade.
+
+Depending on your topology and network then the importance of each of these metrics will change. For example, you may collocate your database with the application server so will have 0ms latency vs competing resources for I/O. You would then need to ensure you have [Disk benchmarking](https://jazz.net/wiki/bin/view/Deployment/DiskBenchmarking)statistics available to understand the impact.
