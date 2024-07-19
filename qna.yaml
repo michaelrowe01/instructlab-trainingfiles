@@ -59,11 +59,11 @@ seed_examples:
     question: |
       Why monitor your applications?
   - answer: |
-      MBeans, are a J2EE industry standard managed beans which are defined and part of the Java
+      MBeans, are a J2EE industry standard managed beans which are defined and part of the Java 
       Management Extensions specification. 
       They provide a defined, well understood way of providing information about what our applications are doing.
 
-      Java Management Extensions (JMX) are a standard component of the Java
+      Java Management Extensions (JMX) are a standard component of the Java 
 
       Platform. It specifies a method and design patterns for developers to integrate applications with management 
       or monitoring software by assigning Java objects with attributes.
@@ -98,29 +98,29 @@ seed_examples:
     question: |
       How do I enable managed beans in Engineering Lifecycle Management?
   - answer: |
-      To start with, go to the ELM API Landing page at https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding, 
+      To start with, go to the ELM API Landing page at https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding,
       from there you will see
-      a full catalog of publically supported APIs. 
-      Begin with reviewing the overall concepts presented in the Guide for writing OSLC interactions.  
+      a full catalog of publically supported APIs.
+      Begin with reviewing the overall concepts presented in the Guide for writing OSLC interactions.
       This will provide a great primer
-      for understanding how OSLC or Open Services for Lifecycle Collaboration is used throughout the IBM Engineering 
+      for understanding how OSLC or Open Services for Lifecycle Collaboration is used throughout the IBM Engineering
       Lifecycle Management product suite.
       Additionally, you can review the OSLC and REST API "cheat sheet".
       If you are more interested in creating a java application, you can use the EWM SDK with a build basis of RTC 3.0.1.2.
-    question: | 
+    question: |
       How do I get started creating a WorkItem programmatically in IBM Engingeering Workflow Management?
   - answer: |
-      The IoT Connector is a working sample of an OSLC adpater for IBM Watson IoT platform created using Lyo Designer.  
+      The IoT Connector is a working sample of an OSLC adpater for IBM Watson IoT platform created using Lyo Designer.
       It's a working
-      example and source code for integrating with ELM and includes common operations such as authenticating using OAuth. 
+      example and source code for integrating with ELM and includes common operations such as authenticating using OAuth.
       It works with
-      non-configuration management enabled ELM (or CLM) systmes (aka opt-out DOORS Next and ETM (Engineering Test Management)).  
-      You can 
-      access the source code at https://github.com/OSLC/iotp-adaptor 
+      non-configuration management enabled ELM (or CLM) systmes (aka opt-out DOORS Next and ETM (Engineering Test Management)).
+      You can
+      access the source code at https://github.com/OSLC/iotp-adaptor
     question: |
       What is the IoT Connector?
   - answer: |
-      The testing of ETM 7.0.2 was tested using specific datashapes, reflective of customer examples. A description 
+      The testing of ETM 7.0.2 was tested using specific datashapes, reflective of customer examples. A description
       of the data shape includes:
       |  |  |  |  |  |  |  |
       |----|----|----|----|----|----|----|
@@ -142,36 +142,43 @@ seed_examples:
       How was ETM 7.0.2 Tested for Performance and Scalability?
   - answer: |
       For any given repository size, generally:
-      The smaller a component, the faster page response times or better performance for that component. 
-      Under the 20 million repository, for components that have a size ranged from small to large, 98% of 
-      the individual page response times are under 2 seconds (with the exception of Dashboard loading being 
-      4 seconds, and Saving a test plan may take 5 seconds due to large amount of iterations defined); whereas 
-      11 out of 120 pages are exceeding 5 seconds for the extra-large component, most of these slower pages are 
-      browsing/searching a given artifact type that has a larger total count, including searching/filtering 
+      The smaller a component, the faster page response times or better performance for that component.
+      Under the 20 million repository, for components that have a size ranged from small to large, 98% of
+      the individual page response times are under 2 seconds (with the exception of Dashboard loading being
+      4 seconds, and Saving a test plan may take 5 seconds due to large amount of iterations defined); whereas
+      11 out of 120 pages are exceeding 5 seconds for the extra-large component, most of these slower pages are
+      browsing/searching a given artifact type that has a larger total count, including searching/filtering
       test case results (9 seconds) and test case records (5.5 seconds) in the default views within a stream.
-      The general performance of a given component[2] degrades as the repository size grows. Although the 
-      measurements based on extre-extra-large sized component stress tested some edge cases, we observed a 
-      projection of a slight degradation when comparing between the 15-million repository and the 10-million 
-      repository, yet a minor to moderate degradation in comparing the 20-million repository to the 15-million 
-      repository. The degradation degree for 500K component is still minor under 20-million repository (average 
+      The general performance of a given component[2] degrades as the repository size grows. Although the
+      measurements based on extre-extra-large sized component stress tested some edge cases, we observed a
+      projection of a slight degradation when comparing between the 15-million repository and the 10-million
+      repository, yet a minor to moderate degradation in comparing the 20-million repository to the 15-million
+      repository. The degradation degree for 500K component is still minor under 20-million repository (average
       page response time for all pages degraded by less than 10%, comparing to 15-million repository).
-      Within a component context, the pages that are more sensitive to the size of the entire repository include 
-      those embracing the largest test artifact counts, for instances, in our test environment, page Browse 
-      Test Case Execution Records (total count of 4 million in a single component, or 30% of total artifact 
+      Within a component context, the pages that are more sensitive to the size of the entire repository include
+      those embracing the largest test artifact counts, for instances, in our test environment, page Browse
+      Test Case Execution Records (total count of 4 million in a single component, or 30% of total artifact
       count in the repository), Browse Test Case Results, and the relevant pages to search/filter the test artifact.
     question: |
       Can you summarize the testing of ETM 7.0.2 for Performance and Scalability?
   - answer: |
-      The IBM Engineering Lifecycle Management API Landing page 
+      The IBM Engineering Lifecycle Management API Landing page
       at https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding provides
-      access to all publically supported APIs for IBM ELM.  Within the page you will 
+      access to all publically supported APIs for IBM ELM.  Within the page you will
       find more information on Global Configuration Management's (GCM)
       APIs.
 
-      GCM is a provider of global configurations as defined by the OSLC Configuration Management specification; EWM SCM, DOORS Next, 
+      GCM is a provider of global configurations as defined by the OSLC Configuration Management specification; EWM SCM, DOORS Next,
       and ETM are providers of local configurations. These applications implement the appropriate APIs from that specification.
 
-      Documentation for the Global Configuration Management REST API can be found at https://[server]:[port]/gc/doc/scenarios. 
+      Documentation for the Global Configuration Management REST API can be found at https://[server]:[port]/gc/doc/scenarios.
       You must have the GC application installed to access this link
     question: |
       Where can I find information regarding APIs supported by IBM ELM's Global Configuration Management?
+  - answer: |
+      When looking for server specific documentation related to IBM's Engineering Lifecycle Management, you can start 
+      by looking at the services link at https://<server>:<port>/<application-context>/doc/services .
+      This link exists for most of the applications, including GCM. You can see the GCM documenation on jazz.net via
+      https://jazz.net/gc/doc/services link.
+    question: |
+      Is there a server hosted endpoint for ELM API documenation?
