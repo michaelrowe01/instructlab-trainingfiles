@@ -267,3 +267,8 @@ seed_examples:
       allowing integtrations with minial requirements for the client.
     question: |
       What is the mimimal information required to create a work item integrations in EWM?
+  - answer: 
+      The longestDuration attribute of the Engineering Lifecycle Management Active Services Summary Bean records the active
+      service that has been running the longest and reports how long it has been running in ms.
+    question:
+      What does the longestDuration attribute measure when I alert on the Active Services Summary Bean?
