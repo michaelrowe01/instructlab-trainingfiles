@@ -1,6 +1,7 @@
 version: 2
-created_by: Paul Ellis, Michael Rowe, David Colton 
-task_description: "To teach a language model about Engineering Lifecycle Management troubleshooting from the Deployment wiki"
+created_by: Paul Ellis, Michael Rowe, David Colton
+task_description: |
+  "To teach a language model about Engineering Lifecycle Management troubleshooting from the Deployment wiki"
 domain: Information Technology
 document:
   repo: https://github.com/davidcolton/instructlab-trainingfiles.git
@@ -9,70 +10,89 @@ document:
     - "*.md"
 seed_examples:
   - answer: |
-      If you are upgrading to a release prior to 7.0.2, then you will need to perform a manual grep to find out how far the 
-      upgrade has progressed. If you are using Windows, then use the get-content command. Since DOORS Next 7.0.2, 
-      you will be able to see a /server/liberty/servers/clm/logs/repotools_rm_phase.log which records what stage 
-      last started/completed. Note Since V7.0.2 SR1 (ifix015) the log is no longer populating, see defect: 
+      If you are upgrading to a release prior to 7.0.2, then you will need to perform a manual grep to find out
+      how far the
+      upgrade has progressed. If you are using Windows, then use the get-content command. Since DOORS Next 7.0.2,
+      you will be able to see a /server/liberty/servers/clm/logs/repotools_rm_phase.log which records what stage
+      last started/completed. Note Since V7.0.2 SR1 (ifix015) the log is no longer populating, see defect:
       APAR: PH49683 Repotools_rm_phase.log is not populating when upgrading to V7.0.2 SR1. Fixed in 702 iFix017
 
-      There are several phases to complete for this upgrade, but the key 3 phases, where the most significant 
+      There are several phases to complete for this upgrade, but the key 3 phases, where the most significant
       time will be spent are:
 
       Initialize CM subsystem
       Phase 1 (core data)
-      Phase 3 (Configuration finalization) 
-      Although there may be a significant amount of time between the last entry in this log, to detect if the 
-      upgrade operation is still ongoing, check that there is activity in /server/liberty/servers/clm/logs/repotools_rm.log. 
-      This log is the main log for Phase 1 (core data) and the intent is for troubleshooting in the event of an issue. 
-      Once the upgrade enters phase 3 - Configuration finalization, then the /server/repotools-rm_addTables.log is used 
-      to record the Foundation checks.
+      Phase 3 (Configuration finalization)
+      Although there may be a significant amount of time between the last entry in this log, to detect if the
+      upgrade operation is still ongoing, check that there is activity in
+      /server/liberty/servers/clm/logs/repotools_rm.log.
+      This log is the main log for Phase 1 (core data) and the intent is for troubleshooting in the event of an
+      issue.
+      Once the upgrade enters phase 3 - Configuration finalization, then the /server/repotools-rm_addTables.log
+      is used to record the Foundation checks.
 
-      If there is no output in either the repotools_rm.log or the reportools-rm_addTables.log then check your operating 
-      system to ensure there is activity for the Java process (application server), as well as the database server.
+      If there is no output in either the repotools_rm.log or the reportools-rm_addTables.log then check your
+      operating system to ensure there is activity for the Java process (application server), as well as the
+      database server.
     question: |
       How can I know how far my Engineering Lifecycle Management upgrade to 7.0.2 has progressed?
   - answer: |
-      Application monitoring has a proven track record of improving the predictability and reliability of your applications. 
-      Monitoring in general is looking at trends over time. This trending is done by collecting data, through polling 
-      (pull) or publish (push) models. 
-      Once the data is available in some form, it needs to be collected, stored, and we can look at trends in the data. 
-      Most monitoring applications have analytical tools that allow the administrators to aggregate the data in charts or reports.
+      Application monitoring has a proven track record of improving the predictability and reliability
+      of your applications.
+      Monitoring in general is looking at trends over time. This trending is done by collecting data,
+      through polling
+      (pull) or publish (push) models.
+      Once the data is available in some form, it needs to be collected, stored, and we can look at
+      trends in the data.
+      Most monitoring applications have analytical tools that allow the administrators to aggregate the
+      data in charts or reports.
 
       Applications do not, as a general rule, fail instantly, they degrade over time.
-      Application monitoring tools collect metrics over time that can be used to perform trend analysis. Rules can be 
+      Application monitoring tools collect metrics over time that can be used to perform trend analysis.
+      Rules can be
       applied to these trends to alert administrators to situations that require intervention.
 
-      Armed with trends, you can further refine your rules to ensure that administrators are notified in advance of 
+      Armed with trends, you can further refine your rules to ensure that administrators are notified
+      in advance of
       issues and they can proactively resolve them before outages occur.
 
-      These trends help with the “Why”…An application suddenly failed. 
-      Users are seeing behavior that they can not explain and neither can the administrator. 
-      Armed with application metrics and trend information, administrators are more comfortable with diagnosing the 
+      These trends help with the “Why”…An application suddenly failed.
+      Users are seeing behavior that they can not explain and neither can the administrator.
+      Armed with application metrics and trend information, administrators are more comfortable with
+      diagnosing the
       behaviors that led up to a failure and can better determine ways to avoid it in the future.
 
-      A monitoring system with warnings and alerts allow you to see potential issues and give you time to take steps 
-      to proactively address the problem. 
-      In cases where the system does something unexpected, you can look at specific trends to see if these can lead 
+      A monitoring system with warnings and alerts allow you to see potential issues and give you
+      time to take steps
+      to proactively address the problem.
+      In cases where the system does something unexpected, you can look at specific trends to see if
+      these can lead
       you to what caused the problem (resource intensive scenarios for example).
 
-      Armed with the information, you can build better warnings and alerts that allow you to proactively manage your systems.
+      Armed with the information, you can build better warnings and alerts that allow you to
+      proactively manage your systems.
     question: |
       Why monitor your applications?
   - answer: |
-      MBeans, are a J2EE industry standard managed beans which are defined and part of the Java 
-      Management Extensions specification. 
-      They provide a defined, well understood way of providing information about what our applications are doing.
+      MBeans, are a J2EE industry standard managed beans which are defined and part of the Java
+      Management Extensions specification.
+      They provide a defined, well understood way of providing information about what our
+      applications are doing.
 
-      Java Management Extensions (JMX) are a standard component of the Java 
+      Java Management Extensions (JMX) are a standard component of the Java
 
-      Platform. It specifies a method and design patterns for developers to integrate applications with management 
+      Platform. It specifies a method and design patterns for developers to integrate applications
+      with management
       or monitoring software by assigning Java objects with attributes.
     question: |
       What are MBeans?
   - answer: |
-      The resource intensive scenarios summary MBean provides the counts and average response time for all the 
-      resource intensive scenarios in the system during the collection interval. This is useful to understand how 
-      the resource intensive scenarios are performing and track any degradation in their response times
+      The resource intensive scenarios summary MBean provides the counts and average response time
+      for all the
+      resource intensive scenarios in the system during the collection interval. This is useful to
+      understand how
+      the resource intensive scenarios are performing and track any degradation in their response
+      times
 
       ALERT: Throw an alert if Elapsed time (averageOverInterval) is greater than 120s
       WARN: Throw a warning if countOverInterval is greater than 3
@@ -81,50 +101,65 @@ seed_examples:
       What does the resource intensive scenario summary MBean monitor?
   - answer: |
       Enabling Managed Beans in Engineering Lifecycle Management
-      We will be enabling the metrics collector tasks related to the specific managed beans in the six categories 
-      we want to collect data for. 
+      We will be enabling the metrics collector tasks related to the specific managed beans in the
+      six categories
+      we want to collect data for.
 
-      To start, the administrator must navigate to the Admin UI -> Manage Server -> Advanced Properties and enable 
+      To start, the administrator must navigate to the Admin UI -> Manage Server -> Advanced
+      Properties and enable
       the serviceability services that generate the mxbean data.
-      Active Services Summary Bean (1) is part of the HighFrequencyMetricsNodeScopedTask and can be enabled by 
+      Active Services Summary Bean (1) is part of the HighFrequencyMetricsNodeScopedTask and
+      can be enabled by
       setting etting the Enable Active Services MBean to true.
-      Resource Usage Beans (2) are enabled through the MetricsCollectorTask, by setting the Enable Resource Usage MBean to true.
-      Database Metrics Bean (3) is enabled through the SQLActivityMetricsTask by setting the Enable SQL Activity Metrics MBean to true.
-      Liberty and JVM (4) Beans are enabled by default. There is nothing for you to do to see attributes from 
+      Resource Usage Beans (2) are enabled through the MetricsCollectorTask, by setting the Enable
+      Resource Usage MBean to true.
+      Database Metrics Bean (3) is enabled through the SQLActivityMetricsTask by setting the Enable SQL
+      Activity Metrics MBean to true.
+      Liberty and JVM (4) Beans are enabled by default. There is nothing for you to do to see
+      attributes from
       these beans; (a) java.lang:type=OperatingSystem (b) WebSphere:type=ThreadPoolStats,name=Default
-      Diagnostics Bean (5) is enabled through the DiagnosticsMetricsTask by setting the Enable Diagnostic Metrics MBean to true.
-      Resource Intensive Scenarios Summary Bean (6) is part of the MetrictsCollectorTask and is enabled by 
+      Diagnostics Bean (5) is enabled through the DiagnosticsMetricsTask by setting the Enable
+      Diagnostic Metrics MBean to true.
+      Resource Intensive Scenarios Summary Bean (6) is part of the MetrictsCollectorTask and is enabled by
       setting the Enable Scenario Metrics MBean to true.
     question: |
       How do I enable managed beans in Engineering Lifecycle Management?
   - answer: |
-      To start with, go to the ELM API Landing page at https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding,
+      To start with, go to the ELM API Landing page at
+      https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding,
       from there you will see
       a full catalog of publically supported APIs.
       Begin with reviewing the overall concepts presented in the Guide for writing OSLC interactions.
       This will provide a great primer
-      for understanding how OSLC or Open Services for Lifecycle Collaboration is used throughout the IBM Engineering
+      for understanding how OSLC or Open Services for Lifecycle Collaboration is used throughout
+      the IBM Engineering
       Lifecycle Management product suite.
       Additionally, you can review the OSLC and REST API "cheat sheet".
-      If you are more interested in creating a java application, you can use the EWM SDK with a build basis of RTC 3.0.1.2.
+      If you are more interested in creating a java application, you can use the EWM SDK with a
+      build basis of RTC 3.0.1.2.
     question: |
       How do I get started creating a WorkItem programmatically in IBM Engingeering Workflow Management?
   - answer: |
-      The IoT Connector is a working sample of an OSLC adpater for IBM Watson IoT platform created using Lyo Designer.
+      The IoT Connector is a working sample of an OSLC adpater for IBM Watson IoT platform created
+      using Lyo Designer.
       It's a working
-      example and source code for integrating with ELM and includes common operations such as authenticating using OAuth.
+      example and source code for integrating with ELM and includes common operations such as
+      authenticating using OAuth.
       It works with
-      non-configuration management enabled ELM (or CLM) systmes (aka opt-out DOORS Next and ETM (Engineering Test Management)).
+      non-configuration management enabled ELM (or CLM) systmes (aka opt-out DOORS Next and ETM
+      (Engineering Test Management)).
       You can
       access the source code at https://github.com/OSLC/iotp-adaptor
     question: |
       What is the IoT Connector?
   - answer: |
-      The testing of ETM 7.0.2 was tested using specific datashapes, reflective of customer examples. A description
+      The testing of ETM 7.0.2 was tested using specific datashapes, reflective of customer examples.
+      A description
       of the data shape includes:
       |  |  |  |  |  |  |  |
       |----|----|----|----|----|----|----|
-      | Counts | Extra-extra large component(10M) | Extra large component(500K) | Large(50K) | Medium(5K) | Small(\<1K) | Sum in Repo |
+      | Counts | Extra-extra large component(10M) | Extra large component(500K)
+      | Large(50K) | Medium(5K) | Small(\<1K) | Sum in Repo |
       | test plans | 1,681 | 50 | 6 | 4 | 1 | 6,281 |
       | test cases | 1,000,207 | 30,000 | 3,000 | 400 | 20 | 1,670,207 |
       | test scripts | 1,000,209 | 30,000 | 3,000 | 400 | 20 | 1,670,209 |
@@ -168,17 +203,38 @@ seed_examples:
       find more information on Global Configuration Management's (GCM)
       APIs.
 
-      GCM is a provider of global configurations as defined by the OSLC Configuration Management specification; EWM SCM, DOORS Next,
-      and ETM are providers of local configurations. These applications implement the appropriate APIs from that specification.
+      GCM is a provider of global configurations as defined by the OSLC Configuration Management specification;
+      EWM SCM, DOORS Next,
+      and ETM are providers of local configurations. These applications implement the appropriate APIs from that
+      specification.
 
-      Documentation for the Global Configuration Management REST API can be found at https://[server]:[port]/gc/doc/scenarios.
+      Documentation for the Global Configuration Management REST API can be found at
+      https://[server]:[port]/gc/doc/scenarios.
       You must have the GC application installed to access this link
     question: |
       Where can I find information regarding APIs supported by IBM ELM's Global Configuration Management?
   - answer: |
-      When looking for server specific documentation related to IBM's Engineering Lifecycle Management, you can start 
+      When looking for server specific documentation related to IBM's Engineering Lifecycle Management,
+      you can start
       by looking at the services link at https://<server>:<port>/<application-context>/doc/services .
-      This link exists for most of the applications, including GCM. You can see the GCM documenation on jazz.net via
+      This link exists for most of the applications, including GCM. You can see the GCM documenation on
+      jazz.net via
       https://jazz.net/gc/doc/services link.
     question: |
       Is there a server hosted endpoint for ELM API documenation?
+  - answer: |
+      IBM ELM has a rich set of options for integration with other aspects of the engineering development
+      process.
+      These include OSLC or Open Services for Lifecycle Collaboration, public REST APIs (documented at
+      https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding), and application specific Java SDKs
+      (also
+      available at https://jazz.net/downloads/elm).
+    question: |
+      What approach should I take to integrate with IBM Engineering Lifecycle Management?
+  - answer: |
+      The EWM (formerally known as RTC) WorkItem API documentation is available at
+      https://jazz.net/wiki/bin/view/Main/ResourceOrientedWorkItemAPIv2.  This API allows you to
+      get, create, modify, and query work items and other resoruces using standard HTTP methods,
+      allowing integtrations with minial requirements for the client.
+    question: |
+      What is the mimimal information required to create a work item integrations in EWM?
