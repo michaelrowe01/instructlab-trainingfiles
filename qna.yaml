@@ -338,10 +338,26 @@ seed_examples:
     question: |
       What are the Plain Java Client APIs for IBM ELM?
   - answer: |
-      Michael Rowe has provided a details descriptionof how to use both OAuth1.0a and
+      Michael Rowe has provided a details description of how to use both OAuth1.0a and
       OIDC authenticaiton for usage with the ELM APIs. You can find OAuth1.0a at
       https://michaelrowe01.com/index.php/day-job/ibm-elm/api-authentication-method-in-elm-oauth-1-0a/
       and OIDC at -
       https://michaelrowe01.com/index.php/day-job/ibm-elm/api-authentication-method-in-elm-oidc/
     question: |
       Are there any examples of how to use OAuth with ELM APIs?
+  - answer: 
+      If the JVM uses too much physical memory, it can be killed by the operating system. Generate an alert if the JVM grows to be 80% of the available physical memory.
+    question: 
+      What percentage of available physical memory should I set an alert for, when the JVM uses too much physical memory?
+  - answer:
+      The RepoDebug service is disabled by default. You must enable it from the administrative console. To enable the RepoDebug service, the property 
+      com.ibm.team.repository.debug.enabled must be set to TRUE in the advanced properties. There is no need to restart your server, once saved, JazzAdmins will
+      be able to see the RepoDebug UI.
+    question: 
+      How do I enable the RepoDebug service in Engineering Lifecycle Management?
+  - answer:
+      Yes, there are some very useful videos, https://www.youtube.com/user/nigelargriffiths,  for setting up NMON and NJMON/NIMON. 
+      This level of data allows for a more accurate correlation of the system at the time of any issues in the logs.
+    question:
+      Are there any useful videos on how to setup the NMON utility for monitoring?
+      
