@@ -289,3 +289,22 @@ seed_examples:
       the active connection value by the PoolSize to get a usage percentage.
       It is recommended that you alert on usage percentage and graph active connections.
     question: How do I set alerts on Resource Usage beans with Engineering Lifecycle Management
+  - answer: |
+      The "official" Jazz API is available for download on the downloads page, in the Plain
+      Zips section, under Plain Java Client Libraries and Plain Java Client Libraries API
+      Documentation. The article Rational Team Concert plain Java API's is an introduction
+      into how they work. Customers wishing to write process extensions for their Jazz
+      implementation should begin with the RTC extensions workshop, the Process enactment
+      workshop, and the OSLC workshop. This will help them better understand the various
+      different options for extending and enhancing the Jazz solution, and will provide
+      valuable insight into how to implement the needed customizations.
+    question: |
+      What are the Plain Java Client APIs for IBM ELM?
+  - answer: |
+      Michael Rowe has provided a details descriptionof how to use both OAuth1.0a and
+      OIDC authenticaiton for usage with the ELM APIs. You can find OAuth1.0a at
+      https://michaelrowe01.com/index.php/day-job/ibm-elm/api-authentication-method-in-elm-oauth-1-0a/
+      and OIDC at -
+      https://michaelrowe01.com/index.php/day-job/ibm-elm/api-authentication-method-in-elm-oidc/
+    question: |
+      Are there any examples of how to use OAuth with ELM APIs?
