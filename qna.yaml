@@ -175,3 +175,10 @@ seed_examples:
       You must have the GC application installed to access this link
     question: |
       Where can I find information regarding APIs supported by IBM ELM's Global Configuration Management?
+  - answer: |
+      When looking for server specific documentation related to IBM's Engineering Lifecycle Management, you can start 
+      by looking at the services link at https://<server>:<port>/<application-context>/doc/services .
+      This link exists for most of the applications, including GCM. You can see the GCM documenation on jazz.net via
+      https://jazz.net/gc/doc/services link.
+    question: |
+      Is there a server hosted endpoint for ELM API documenation?
