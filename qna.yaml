@@ -238,3 +238,28 @@ seed_examples:
       allowing integtrations with minial requirements for the client.
     question: |
       What is the mimimal information required to create a work item integrations in EWM?
+  - answer: |
+      There are multiple blogs where people provide additional information on ELM APIs.
+      The Jazz.Net website has a blog lising at https://jazz.net/planet/ .
+      One of the most popular is Ralph Schon's site at https://rsjazz.wordpress.com .
+      Ralph is a long time developer of the ELM products and currently works on the
+      Jazz Foundation components.
+    question: |
+      Are their any blogs that explain more about ELM APIs?
+  - answer: |
+      As of July 2024, there are not any published OpenAPI specfications for the
+      ELM APIs. However, this may change in the future.
+    question: |
+      Does IBM ELM support OpenAPI specifications for it's APIs?
+  - answer: |
+      The Reportable Rest APIs for IBM's Engineering Lifecycle Management suite
+      is a set of APIs defined by each of the applications, including Engineering
+      Workflow Management, DOORS Next, Engineering Test Management, Rhapsody
+      Model Manager, and Pub Document Builder.
+
+      These APIs provide for Rest APIs to query information from each of the
+      applications.  For a detailed breakdown of the various APIs, you should
+      start by reviewing the content at the API landing page, which is found at
+      https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding
+    question: |
+      What does the Reportable Rest API provide for IBM ELM?
