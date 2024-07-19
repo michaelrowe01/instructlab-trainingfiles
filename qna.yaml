@@ -1,5 +1,5 @@
 version: 2
-created_by: Paul Ellis, Michael Rowe, David Colton 
+created_by: Paul Ellis, Michael Rowe, David Colton
 task_description: "To teach a language model about Engineering Lifecycle Management troubleshooting from the Deployment wiki"
 domain: Information Technology
 document:
@@ -31,6 +31,7 @@ seed_examples:
       system to ensure there is activity for the Java process (application server), as well as the database server.
     question: |
       How can I know how far my Engineering Lifecycle Management upgrade to 7.0.2 has progressed?
+
   - answer: |
       Application monitoring has a proven track record of improving the predictability and reliability of your applications. 
       Monitoring in general is looking at trends over time. This trending is done by collecting data, through polling 
@@ -58,6 +59,7 @@ seed_examples:
       Armed with the information, you can build better warnings and alerts that allow you to proactively manage your systems.
     question: |
       Why monitor your applications?
+
   - answer: |
       MBeans, are a J2EE industry standard managed beans which are defined and part of the Java 
       Management Extensions specification. 
@@ -69,6 +71,7 @@ seed_examples:
       or monitoring software by assigning Java objects with attributes.
     question: |
       What are MBeans?
+
   - answer: |
       The resource intensive scenarios summary MBean provides the counts and average response time for all the 
       resource intensive scenarios in the system during the collection interval. This is useful to understand how 
@@ -79,6 +82,7 @@ seed_examples:
       ALERT: Throw an alert if countOverInterval is greater than 5
     question: |
       What does the resource intensive scenario summary MBean monitor?
+
   - answer: |
       Enabling Managed Beans in Engineering Lifecycle Management
       We will be enabling the metrics collector tasks related to the specific managed beans in the six categories 
@@ -97,6 +101,24 @@ seed_examples:
       setting the Enable Scenario Metrics MBean to true.
     question: |
       How do I enable managed beans in Engineering Lifecycle Management?
+
+  - answer: |
+      Application monitoring should compliment your enterprise monitoring strategy. If you have a hybrid environment (a mixture of on-premises and SaaS or
+      PaaS services), it is important that the key distributed services are monitored at the network, operating system, database and application levels. 
+      A topology diagram of your Engineering Lifecycle Management system will show you the potential points of failure and the applications that should be monitored.'
+    question: |
+      What should you monitor in Engineering Lifecycle Management?
+
+  - answer: |
+      The Java Database Connectivity (JDBC) and Relational Database mediators are used to monitor access to critical application resources. Both (JDBC and RDB
+      sets of beans should be monitored, there have been cases where RDB beans alert before JDBC beans.
+      If there are multiple applications installed on a server, then alert on each mbean separately. Do not aggregate across multiple mbeans.
+      If the JDBC or RDB mediator pool have non-zero queue lengths, then the server is throttling access to the database. Increase the JDBC or RDB mediator pool size in the Server->Advanced Properties.
+      The usage percentage can be used to warn you when you are close to exhausting the pools, so you can plan to increase the pool sizes during your next maintenance window (a server restart is required).
+      Active connections gives you similar information to usage percentage — you can divide the active connection value by the PoolSize to get a usage percentage.
+      It is recommended that you alert on usage percentage and graph active connections.'
+    question: How do I set alerts on Resource Usage beans with Engineering Lifecycle Management
+
   - answer: |
       To start with, go to the ELM API Landing page at https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding,
       from there you will see
@@ -109,6 +131,7 @@ seed_examples:
       If you are more interested in creating a java application, you can use the EWM SDK with a build basis of RTC 3.0.1.2.
     question: |
       How do I get started creating a WorkItem programmatically in IBM Engingeering Workflow Management?
+
   - answer: |
       The IoT Connector is a working sample of an OSLC adpater for IBM Watson IoT platform created using Lyo Designer.
       It's a working
@@ -119,6 +142,7 @@ seed_examples:
       access the source code at https://github.com/OSLC/iotp-adaptor
     question: |
       What is the IoT Connector?
+
   - answer: |
       The testing of ETM 7.0.2 was tested using specific datashapes, reflective of customer examples. A description
       of the data shape includes:
@@ -140,6 +164,7 @@ seed_examples:
       | Newly added in 702 | N | N | Y | Y | Y | \- |
     question: |
       How was ETM 7.0.2 Tested for Performance and Scalability?
+
   - answer: |
       For any given repository size, generally:
       The smaller a component, the faster page response times or better performance for that component.
@@ -161,6 +186,7 @@ seed_examples:
       count in the repository), Browse Test Case Results, and the relevant pages to search/filter the test artifact.
     question: |
       Can you summarize the testing of ETM 7.0.2 for Performance and Scalability?
+
   - answer: |
       The IBM Engineering Lifecycle Management API Landing page
       at https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding provides
@@ -175,6 +201,7 @@ seed_examples:
       You must have the GC application installed to access this link
     question: |
       Where can I find information regarding APIs supported by IBM ELM's Global Configuration Management?
+
   - answer: |
       When looking for server specific documentation related to IBM's Engineering Lifecycle Management, you can start 
       by looking at the services link at https://<server>:<port>/<application-context>/doc/services .
