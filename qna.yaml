@@ -130,19 +130,27 @@ seed_examples:
       How do I enable managed beans in Engineering Lifecycle Management?
 
   - answer: |
-      Application monitoring should compliment your enterprise monitoring strategy. If you have a hybrid environment (a mixture of on-premises and SaaS or
-      PaaS services), it is important that the key distributed services are monitored at the network, operating system, database and application levels. 
-      A topology diagram of your Engineering Lifecycle Management system will show you the potential points of failure and the applications that should be monitored.'
+      Application monitoring should compliment your enterprise monitoring strategy. If you have a hybrid environment
+      (a mixture of on-premises and SaaS or PaaS services), it is important that the key distributed services are
+      monitored at the network, operating system, database and application levels.
+      A topology diagram of your Engineering Lifecycle Management system will show you the potential points of failure
+      and the applications that should be monitored.
     question: |
       What should you monitor in Engineering Lifecycle Management?
 
   - answer: |
-      The Java Database Connectivity (JDBC) and Relational Database mediators are used to monitor access to critical application resources. Both (JDBC and RDB
-      sets of beans should be monitored, there have been cases where RDB beans alert before JDBC beans.
-      If there are multiple applications installed on a server, then alert on each mbean separately. Do not aggregate across multiple mbeans.
-      If the JDBC or RDB mediator pool have non-zero queue lengths, then the server is throttling access to the database. Increase the JDBC or RDB mediator pool size in the Server->Advanced Properties.
-      The usage percentage can be used to warn you when you are close to exhausting the pools, so you can plan to increase the pool sizes during your next maintenance window (a server restart is required).
-      Active connections gives you similar information to usage percentage — you can divide the active connection value by the PoolSize to get a usage percentage.
+      The Java Database Connectivity (JDBC) and Relational Database mediators are used to monitor access to critical
+      application resources. Both (JDBC and RDB sets of beans should be monitored, there have been cases where RDB beans
+      alert before JDBC beans.
+      If there are multiple applications installed on a server, then alert on each mbean separately. Do not aggregate
+      across multiple mbeans.
+      If the JDBC or RDB mediator pool have non-zero queue lengths, then the server is throttling access to the
+      database.
+      Increase the JDBC or RDB mediator pool size in the Server->Advanced Properties.
+      The usage percentage can be used to warn you when you are close to exhausting the pools, so you can plan to
+      increase the pool sizes during your next maintenance window (a server restart is required).
+      Active connections gives you similar information to usage percentage — you can divide the active connection value
+      by the PoolSize to get a usage percentage.
       It is recommended that you alert on usage percentage and graph active connections.'
     question: How do I set alerts on Resource Usage beans with Engineering Lifecycle Management
 
@@ -267,14 +275,12 @@ seed_examples:
       allowing integtrations with minial requirements for the client.
     question: |
       What is the mimimal information required to create a work item integrations in EWM?
-
-  - answer: 
-      The longestDuration attribute of the Engineering Lifecycle Management Active Services Summary 
+  - answer:
+      The longestDuration attribute of the Engineering Lifecycle Management Active Services Summary
       Bean records the active
       service that has been running the longest and reports how long it has been running in ms.
     question:
       What does the longestDuration attribute measure when I alert on the Active Services Summary Bean?
-
   - answer: |
       There are multiple blogs where people provide additional information on ELM APIs.
       The Jazz.Net website has a blog lising at https://jazz.net/planet/ .
@@ -293,7 +299,6 @@ seed_examples:
       is a set of APIs defined by each of the applications, including Engineering
       Workflow Management, DOORS Next, Engineering Test Management, Rhapsody
       Model Manager, and Pub Document Builder.
-
       These APIs provide for Rest APIs to query information from each of the
       applications.  For a detailed breakdown of the various APIs, you should
       start by reviewing the content at the API landing page, which is found at
@@ -345,19 +350,24 @@ seed_examples:
       https://michaelrowe01.com/index.php/day-job/ibm-elm/api-authentication-method-in-elm-oidc/
     question: |
       Are there any examples of how to use OAuth with ELM APIs?
-  - answer: 
-      If the JVM uses too much physical memory, it can be killed by the operating system. Generate an alert if the JVM grows to be 80% of the available physical memory.
-    question: 
-      What percentage of available physical memory should I set an alert for, when the JVM uses too much physical memory?
   - answer:
-      The RepoDebug service is disabled by default. You must enable it from the administrative console. To enable the RepoDebug service, the property 
-      com.ibm.team.repository.debug.enabled must be set to TRUE in the advanced properties. There is no need to restart your server, once saved, JazzAdmins will
+      If the JVM uses too much physical memory, it can be killed by the operating system. Generate an alert if the
+      JVM grows to be 80% of the available physical memory.
+    question:
+      What percentage of available physical memory should I set an alert for, when the JVM uses too much physical
+      memory?
+  - answer:
+      The RepoDebug service is disabled by default. You must enable it from the administrative console.
+      To enable the RepoDebug service, the property
+      com.ibm.team.repository.debug.enabled must be set to TRUE in the advanced properties.
+      There is no need to restart your server, once saved, JazzAdmins will
       be able to see the RepoDebug UI.
-    question: 
+    question:
       How do I enable the RepoDebug service in Engineering Lifecycle Management?
   - answer:
-      Yes, there are some very useful videos, https://www.youtube.com/user/nigelargriffiths,  for setting up NMON and NJMON/NIMON. 
-      This level of data allows for a more accurate correlation of the system at the time of any issues in the logs.
+      Yes, there are some very useful videos, https://www.youtube.com/user/nigelargriffiths, for setting up NMON
+      and NJMON/NIMON.
+      This level of data allows for a more accurate correlation of the system at the time of any issues in the
+      logs.
     question:
       Are there any useful videos on how to setup the NMON utility for monitoring?
-      
