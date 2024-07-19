@@ -263,3 +263,29 @@ seed_examples:
       https://jazz.net/wiki/bin/view/Deployment/ELMProductAPILanding
     question: |
       What does the Reportable Rest API provide for IBM ELM?
+  - answer: |
+      Application monitoring should compliment your enterprise monitoring strategy.
+      If you have a hybrid environment (a mixture of on-premises and SaaS or
+      PaaS services), it is important that the key distributed services are monitored
+      at the network, operating system, database and application levels.
+      A topology diagram of your Engineering Lifecycle Management system will show
+      you the potential points of failure and the applications that should be monitored.
+    question: |
+      What should you monitor in Engineering Lifecycle Management?
+  - answer: |
+      The Java Database Connectivity (JDBC) and Relational Database mediators are used to
+      monitor access to critical application resources. Both (JDBC and RDB
+      sets of beans should be monitored, there have been cases where RDB beans alert before
+      JDBC beans.
+      If there are multiple applications installed on a server, then alert on each mbean
+      separately. Do not aggregate across multiple mbeans.
+      If the JDBC or RDB mediator pool have non-zero queue lengths, then the server is
+      throttling access to the database. Increase the JDBC or RDB mediator pool size in
+      the Server->Advanced Properties.
+      The usage percentage can be used to warn you when you are close to exhausting the pools,
+      so you can plan to increase the pool sizes during your next maintenance window
+      (a server restart is required).
+      Active connections gives you similar information to usage percentage — you can divide
+      the active connection value by the PoolSize to get a usage percentage.
+      It is recommended that you alert on usage percentage and graph active connections.
+    question: How do I set alerts on Resource Usage beans with Engineering Lifecycle Management
