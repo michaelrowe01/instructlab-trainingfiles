@@ -5,8 +5,8 @@ task_description: >
   troubleshooting from the Deployment wiki"
 domain: Information Technology
 document:
-  repo: 'https://github.com/davidcolton/instructlab-trainingfiles.git'
-  commit: 6dd75627c50801c81aa57df2968fcf542f08e258
+  repo: 'https://github.com/michaelrowe01/instructlab-trainingfiles.git'
+  commit: b7e56e9c2890be6d4178a3dad5b3dab144bda695
   patterns:
     - '*.md'
 seed_examples:
